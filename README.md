@@ -1,6 +1,6 @@
-# Loja do Groot
+# Plant Store
 
-Bem-vindo à Loja do Groot! Este é um projeto de e-commerce para venda de plantas, desenvolvido com React, TypeScript e Vite.
+Bem-vindo à Plant Store! Este é um projeto de e-commerce para venda de plantas, desenvolvido com React, TypeScript e Vite.
 
 ## Índice
 
@@ -12,7 +12,7 @@ Bem-vindo à Loja do Groot! Este é um projeto de e-commerce para venda de plant
 
 ## Sobre
 
-A Loja do Groot é um e-commerce fictício que oferece uma ampla variedade de plantas. O objetivo deste projeto é demonstrar habilidades em desenvolvimento front-end utilizando tecnologias modernas.
+A Plant Store é um e-commerce fictício que oferece uma ampla variedade de plantas. O objetivo deste projeto é demonstrar habilidades em desenvolvimento front-end utilizando tecnologias modernas.
 
 ## Tecnologias
 
