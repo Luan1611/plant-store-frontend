@@ -1,0 +1,21 @@
+.title h1 {
+  font-family: 'EB Garamond', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #1a3306;
+}
+
+.subtitle h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #1e1e24;
+}
+
+.title strong {
+  font-family: 'EB Garamond', sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: #8a9b6e;
+}

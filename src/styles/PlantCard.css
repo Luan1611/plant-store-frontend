@@ -1,0 +1,122 @@
+.plant-card {
+  width: 100%;
+  max-width: 388px;
+
+  display: flex;
+  flex-flow: column;
+  background-color: #fff;
+  box-shadow: 1px 6px 4px rgba(0, 0, 0, 0.082);
+
+  padding-bottom: 38px;
+  gap: 16px;
+}
+
+.plant-image {
+  width: 100%;
+  height: 388px;
+  object-fit: cover;
+}
+
+.plant-card .plant-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.plant-info {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 16px;
+  padding: 32px;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  gap: 15px;
+}
+
+.old-price {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: #afb2aa;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.plant-button {
+  border: #8a9b6e 1.62px solid;
+  background-color: #8a9b6e1f;
+  color: #8a9b6e;
+  text-decoration: none;
+  border-radius: 20px;
+  padding: 6.5px 13px;
+  width: fit-content;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+}
+
+.plant-button:hover {
+  background-color: #8a9b6e;
+  color: #fff;
+}
+
+.delete {
+  background-color: #d11a292c !important;
+  color: #8a0f1a !important;
+  border: #d11a29 1.62px solid;
+}
+
+.delete:hover {
+  background-color: rgb(126, 3, 3) !important;
+  color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  .plant-name {
+    font-size: 20px !important;
+  }
+
+  .plant-card {
+    max-width: 100%;
+    height: fit-content;
+  }
+
+  .plant-image {
+    width: 100%;
+    height: 300px;
+  }
+
+  .plant-info {
+    padding: 16px;
+  }
+
+  .price-container {
+    gap: 8px;
+  }
+
+  .price {
+    font-size: 16px;
+    gap: 8px;
+  }
+
+  .old-price {
+    font-size: 12px;
+  }
+
+  .plant-button {
+    padding: 6px 10px;
+  }
+}

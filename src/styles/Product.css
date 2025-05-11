@@ -1,0 +1,124 @@
+.product-container {
+  padding: 7% 4%;
+  width: 100%;
+  gap: 4%;
+  display: flex;
+
+  h1 {
+    color: #354733;
+  }
+
+  .subtitle {
+    color: #afb2aa;
+  }
+
+  .text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 400;
+    color: #000;
+  }
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.labels {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+
+  color: #158212;
+}
+
+.labels span {
+  font-family: 'Raleway', sans-serif;
+  line-height: 25px;
+  font-size: 14px;
+  font-weight: 400;
+
+  padding: 6.5px 13px;
+
+  border-radius: 20px;
+  border: 1.62px solid #83e281;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.lato {
+  font-family: 'lato', sans-serif;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 700;
+}
+
+.line-through {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: #afb2aa;
+}
+
+.product-image {
+  max-height: 100%;
+  height: 700px;
+  width: 100%;
+}
+
+.product-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .product-container {
+    flex-direction: column;
+    padding: 15% 2%;
+  }
+
+  .product-image {
+    height: 400px;
+  }
+
+  .product-info {
+    padding-left: 15px;
+    gap: 10px;
+  }
+
+  .labels {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .labels span {
+    padding: 6.5px 10px;
+  }
+
+  .features {
+    gap: 5px;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .lato {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .line-through {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,11 @@
+.icon {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 100%;
+  background-color: #354733;
+}

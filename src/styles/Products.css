@@ -1,0 +1,8 @@
+.products {
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+}

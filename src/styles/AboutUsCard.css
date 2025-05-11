@@ -1,0 +1,55 @@
+.about-us-card {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  min-width: 32%;
+  width: 32%;
+
+  background-color: #fcfcfc;
+
+  img {
+    width: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .button {
+    border: #8a9b6e 1.62px solid;
+    background-color: #8a9b6e1f;
+    color: #8a9b6e;
+    text-decoration: none;
+    border-radius: 20px;
+    gap: 5px;
+    padding: 6.5px 13px;
+    width: fit-content;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: center;
+  }
+
+  .button:hover {
+    background-color: #8a9b6e;
+    color: #fff;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-us-card {
+    min-width: 95%;
+    width: 95%;
+  }
+
+  .about-us-card img {
+    max-width: 200px;
+    max-height: 200px;
+  }
+}
