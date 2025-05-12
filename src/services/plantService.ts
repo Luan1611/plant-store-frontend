@@ -4,10 +4,6 @@ import { Plant, PlantType } from '../models/Plant'
 import { PlantLabel } from '../validation/plantSchema'
 
 export const createPlant = async (data: Plant): Promise<void> => {
-
-  console.log(data)
-
-
   await axios.post(`${PLANT_STORE_API_URL}/plants/`, data)
 }
 

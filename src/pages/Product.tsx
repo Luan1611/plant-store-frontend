@@ -8,12 +8,8 @@ import '../styles/Product.css'
 const Product = () => {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
-  console.log('Product ID from params:', id)
-  
+
   const { plant: product, loading, error } = useFetchPlant(id || '')
-  console.log('Product data:', product)
-  console.log('Loading state:', loading)
-  console.log('Error state:', error)
 
   if (loading) {
     console.log('Rendering loading state')
