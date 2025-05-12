@@ -16,6 +16,7 @@ const useFetchPlant = (id: string) => {
   useEffect(() => {
     const fetchPlant = async () => {
       if (!id) {
+        console.error('No plant ID provided')
         setError('No plant ID provided')
         setLoading(false)
         return
@@ -24,17 +25,27 @@ const useFetchPlant = (id: string) => {
       try {
         setLoading(true)
         setError(null)
-        console.log(`Fetching plant from: ${PLANT_STORE_API_URL}/plants/${id}`)
+        const url = `${PLANT_STORE_API_URL}/plants/${id}`
+        console.log('Fetching plant from:', url)
         
-        const response = await axios.get(
-          `${PLANT_STORE_API_URL}/plants/${id}`
-        )
+        const response = await axios.get(url)
+        console.log('API Response:', response)
+
+        if (!response.data) {
+          throw new Error('No data received from API')
+        }
 
         console.log('Plant data received:', response.data)
         setPlant(response.data)
       } catch (err) {
         console.error('Error fetching plant:', err)
         if (axios.isAxiosError(err)) {
+          console.error('Axios error details:', {
+            status: err.response?.status,
+            statusText: err.response?.statusText,
+            data: err.response?.data,
+            headers: err.response?.headers
+          })
           setError(`Failed to fetch plant: ${err.response?.status} - ${err.response?.data?.message || err.message}`)
         } else {
           setError(err instanceof Error ? err.message : 'Failed to fetch plant')

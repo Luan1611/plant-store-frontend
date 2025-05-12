@@ -8,9 +8,15 @@ import '../styles/Product.css'
 const Product = () => {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
+  console.log('Product ID from params:', id)
+  
   const { plant: product, loading, error } = useFetchPlant(id || '')
+  console.log('Product data:', product)
+  console.log('Loading state:', loading)
+  console.log('Error state:', error)
 
   if (loading) {
+    console.log('Rendering loading state')
     return (
       <div className="loading-container">
         <Loading color='#000' size='medium' />
@@ -39,12 +45,13 @@ const Product = () => {
     )
   }
 
+  console.log('Rendering product:', product)
   return (
     <div className='product-container'>
       <div className='product-image'>
         <img
           src={
-            product.imgUrl.includes('example')
+            !product.imgUrl || product.imgUrl.includes('example')
               ? 'https://placehold.co/500x500'
               : product.imgUrl
           }
