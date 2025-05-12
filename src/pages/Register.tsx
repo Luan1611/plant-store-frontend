@@ -50,8 +50,6 @@ const Register = () => {
 
   const handlePlantRegistration = async (data: IFormInput) => {
     try {
-      //const plantLabelId = getPlantLabelId(data.plantLabel)
-
       const payload: Plant = {
         name: data.plantName,
         subtitle: data.plantSubtitle,
@@ -61,7 +59,7 @@ const Register = () => {
         discountPercentage: data.plantDiscountPercentage,
         features: data.plantFeatures,
         description: data.plantDescription,
-        imgUrl: data.plantImgUrl,
+        imgurl: data.plantImgurl,
         plantCategoryId: 1
       }
 
@@ -97,11 +95,12 @@ const Register = () => {
 
           <Input
             label='Image URL'
-            placeholder='https://example.com/plant.jpg'
-            {...register('plantImgUrl')}
+            type='text'
+            placeholder='https://example.com/image.jpg'
+            {...register('plantImgurl')}
           />
-          {errors.plantImgUrl?.message && (
-            <p className='error'>{errors.plantImgUrl?.message}</p>
+          {errors.plantImgurl?.message && (
+            <p className='error'>{errors.plantImgurl?.message}</p>
           )}
 
           <div className='plant-types-container'>

@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { PLANT_STORE_API_URL } from '../main'
-import { Plant, PlantType } from '../models/Plant'
+import { PlantType } from '../models/Plant'
 import { PlantLabel } from '../validation/plantSchema'
 
-export const createPlant = async (data: Plant): Promise<void> => {
+export const createPlant = async (data:any): Promise<void> => {
   await axios.post(`${PLANT_STORE_API_URL}/plants/`, data)
 }
 

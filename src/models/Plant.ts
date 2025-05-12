@@ -9,7 +9,7 @@ export interface Plant {
   discountPercentage: number
   features: string
   description: string
-  imgUrl: string
+  imgurl: string
   plantCategoryId: number
 }
 

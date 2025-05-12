@@ -3,8 +3,8 @@ import { Plant } from '../models/Plant'
 import { deletePlant } from '../services/plantService'
 import '../styles/PlantCard.css'
 
-const PlantCard = ({ name, price, id, discountPercentage, imgUrl }: Plant) => {
-  imgUrl = imgUrl || 'https://example.com/images/rubber-plant.jpg'
+const PlantCard = ({ name, price, id, discountPercentage, imgurl }: Plant) => {
+  imgurl = imgurl || 'https://example.com/images/rubber-plant.jpg'
 
   const handleDelete = async () => {
     await deletePlant(id || '')
@@ -16,7 +16,7 @@ const PlantCard = ({ name, price, id, discountPercentage, imgUrl }: Plant) => {
       <img
         className='plant-image'
         src={
-          imgUrl.includes('example') ? 'https://placehold.co/500x500' : imgUrl
+          imgurl.includes('example') ? 'https://placehold.co/500x500' : imgurl
         }
         alt='plant'
       />
@@ -48,4 +48,5 @@ const PlantCard = ({ name, price, id, discountPercentage, imgUrl }: Plant) => {
     </div>
   )
 }
+
 export default PlantCard

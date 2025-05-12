@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom'
+import { useState } from 'react'
 import Button from '../components/Button'
 import Loading from '../components/Loading'
 import Title from '../components/Title'
@@ -8,11 +9,22 @@ import '../styles/Product.css'
 const Product = () => {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
+  const [imageError, setImageError] = useState(false)
+  const [imageLoading, setImageLoading] = useState(true)
 
   const { plant: product, loading, error } = useFetchPlant(id || '')
 
+  const handleImageError = () => {
+    console.error('Error loading image:', product?.imgurl)
+    setImageError(true)
+    setImageLoading(false)
+  }
+
+  const handleImageLoad = () => {
+    setImageLoading(false)
+  }
+
   if (loading) {
-    console.log('Rendering loading state')
     return (
       <div className="loading-container">
         <Loading color='#000' size='medium' />
@@ -41,17 +53,24 @@ const Product = () => {
     )
   }
 
-  console.log('Rendering product:', product)
   return (
     <div className='product-container'>
       <div className='product-image'>
+        {imageLoading && (
+          <div className="image-loading">
+            <Loading color='#000' size='small' />
+          </div>
+        )}
         <img
           src={
-            !product.imgUrl || product.imgUrl.includes('example')
+            imageError || !product.imgurl || product.imgurl.includes('example')
               ? 'https://placehold.co/500x500'
-              : product.imgUrl
+              : product.imgurl
           }
           alt='plant'
+          onError={handleImageError}
+          onLoad={handleImageLoad}
+          style={{ display: imageLoading ? 'none' : 'block' }}
         />
       </div>
       <div className='product-info'>

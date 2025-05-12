@@ -2,24 +2,26 @@ import '../styles/AboutUsCard.css'
 
 interface AboutUsCardProps {
   name: string
-  description: string
-  imgUrl?: string
+  role: string
+  imgurl?: string
   linkedin: string
   github: string
 }
 
 const AboutUsCard = ({
   name,
-  description,
-  imgUrl = 'https://placehold.co/500x750',
+  role,
+  imgurl,
   linkedin,
   github,
 }: AboutUsCardProps) => {
+  imgurl = imgurl || 'https://placehold.co/500x750'
+
   return (
     <div className='about-us-card'>
-      <img src={imgUrl} alt='Igor' />
-      <h2>{name}</h2>
-      <p>{description}</p>
+      <img src={imgurl} alt='Igor' />
+      <h3>{name}</h3>
+      <p>{role}</p>
       <div className='buttons'>
         <a className='button' href={linkedin} target='_blank'>
           <svg

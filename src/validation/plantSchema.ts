@@ -1,8 +1,20 @@
 import { z } from 'zod'
 
 export enum PlantLabel {
-  Indoor = 'Indoor',
-  Outdoor = 'Outdoor',
+  INDOOR = 'Indoor',
+  OUTDOOR = 'Outdoor',
+}
+
+export interface IFormInput {
+  plantName: string
+  plantSubtitle: string
+  plantTypes: number[]
+  plantPrice: number
+  plantDiscountPercentage: number
+  plantLabel: PlantLabel
+  plantFeatures: string
+  plantDescription: string
+  plantImgurl: string
 }
 
 export const plantSchema = z.object({
@@ -30,7 +42,7 @@ export const plantSchema = z.object({
   plantDescription: z
     .string()
     .min(15, { message: 'Description must be at least 15 characters' }),
-  plantImgUrl: z
+  plantImgurl: z
     .string()
     .min(5, { message: 'Image URL must be at least 5 characters' }),
 })
