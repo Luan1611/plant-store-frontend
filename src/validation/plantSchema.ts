@@ -12,9 +12,9 @@ export const plantSchema = z.object({
   plantSubtitle: z
     .string()
     .min(5, { message: 'Plant subtitle must be at least 5 characters' }),
-  plantType: z
-    .string()
-    .min(2, { message: 'Plant type must be at least 2 characters' }),
+  plantTypes: z
+    .array(z.number())
+    .min(1, { message: 'Select at least one plant type' }),
   plantPrice: z
     .number({ message: 'Price must be a number' })
     .positive({ message: 'Price must be positive' }),

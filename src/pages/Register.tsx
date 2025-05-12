@@ -1,45 +1,62 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import rightPlant from '../assets/images/right_plant.png'
 import Button from '../components/Button'
 import Input from '../components/Input'
 import TextArea from '../components/TextArea'
-import { Plant } from '../models/Plant'
+import { Plant, PlantType } from '../models/Plant'
 import {
-  createDefaultPlantType,
   createPlant,
-  createPlantTypeIfNotExists,
+  fetchPlantTypes,
   getPlantLabelId,
 } from '../services/plantService'
 import '../styles/Register.css'
 import { IFormInput, plantSchema } from '../validation/plantSchema'
 
 const Register = () => {
+  const [plantTypes, setPlantTypes] = useState<PlantType[]>([])
+  const [selectedPlantTypes, setSelectedPlantTypes] = useState<number[]>([])
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<IFormInput>({
     resolver: zodResolver(plantSchema),
   })
 
+  useEffect(() => {
+    const loadPlantTypes = async () => {
+      try {
+        const types = await fetchPlantTypes()
+        setPlantTypes(types)
+      } catch (error) {
+        console.error('Failed to fetch plant types:', error)
+      }
+    }
+    loadPlantTypes()
+  }, [])
+
+  const handlePlantTypeChange = (plantTypeId: number) => {
+    setSelectedPlantTypes(prev => {
+      const newSelection = prev.includes(plantTypeId)
+        ? prev.filter(id => id !== plantTypeId)
+        : [...prev, plantTypeId]
+      setValue('plantTypes', newSelection)
+      return newSelection
+    })
+  }
+
   const handlePlantRegistration = async (data: IFormInput) => {
     try {
-      //const plantTypes = await createDefaultPlantType()
-      const plantLabelId = getPlantLabelId(data.plantLabel)
-
-      let plantTypeId: number = 0
-      try {
-        //plantTypeId = await createPlantTypeIfNotExists(plantTypes, data)
-      } catch (error) {
-        console.error('Failed to create plant type:', error)
-        window.location.href = '/'
-      }
+      //const plantLabelId = getPlantLabelId(data.plantLabel)
 
       const payload: Plant = {
         name: data.plantName,
         subtitle: data.plantSubtitle,
-        plantTypeId: [plantLabelId, plantTypeId],
+        plantTypesIds: [...data.plantTypes],
         price: data.plantPrice,
         isInSale: true,
         discountPercentage: data.plantDiscountPercentage,
@@ -50,10 +67,9 @@ const Register = () => {
       }
 
       await createPlant(payload)
-      //window.location.href = '/'
+      window.location.href = '/'
     } catch (error) {
       console.error('Failed to register plant:', error)
-      //window.location.href = '/'
     }
   }
 
@@ -89,14 +105,25 @@ const Register = () => {
             <p className='error'>{errors.plantImgUrl?.message}</p>
           )}
 
-          <Input
-            label='Plant type'
-            placeholder='Cactus'
-            {...register('plantType')}
-          />
-          {errors.plantType?.message && (
-            <p className='error'>{errors.plantType?.message}</p>
-          )}
+          <div className='plant-types-container'>
+            <label>Plant Types</label>
+            <div className='plant-types-grid'>
+              {plantTypes.map((type) => (
+                <div key={type.id} className='plant-type-checkbox'>
+                  <input
+                    type='checkbox'
+                    id={`plant-type-${type.id}`}
+                    checked={selectedPlantTypes.includes(type.id)}
+                    onChange={() => handlePlantTypeChange(type.id)}
+                  />
+                  <label htmlFor={`plant-type-${type.id}`}>{type.name}</label>
+                </div>
+              ))}
+            </div>
+            {errors.plantTypes?.message && (
+              <p className='error'>{errors.plantTypes?.message}</p>
+            )}
+          </div>
 
           <div className='flex-row'>
             <Input

@@ -10,12 +10,33 @@ const Product = () => {
   const { id } = useParams<{ id: string }>()
   const { plant: product, loading, error } = useFetchPlant(id || '')
 
-  if (loading) return <Loading color='#000' size='medium' />
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <Loading color='#000' size='medium' />
+      </div>
+    )
+  }
 
-  if (error || !product || !product.plantTypes) {
-    console.error(error)
-    navigate('/404')
-    return
+  if (error) {
+    console.error('Error fetching product:', error)
+    return (
+      <div className="error-container">
+        <h2>Error loading product</h2>
+        <p>{error}</p>
+        <button onClick={() => navigate('/')}>Return to Home</button>
+      </div>
+    )
+  }
+
+  if (!product) {
+    console.error('No product data received')
+    return (
+      <div className="error-container">
+        <h2>Product not found</h2>
+        <button onClick={() => navigate('/')}>Return to Home</button>
+      </div>
+    )
   }
 
   return (
@@ -36,7 +57,7 @@ const Product = () => {
           <h2 className='subtitle lato'>{product.subtitle}</h2>
         </div>
         <div className='labels'>
-          {product.plantTypes.map(plantType => (
+          {product.plantTypes?.map(plantType => (
             <span key={plantType.id} className='label lato'>
               {plantType.name.toLowerCase()}
             </span>
@@ -81,4 +102,5 @@ const Product = () => {
     </div>
   )
 }
+
 export default Product

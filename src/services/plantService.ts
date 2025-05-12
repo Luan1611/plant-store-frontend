@@ -7,7 +7,7 @@ export const createPlant = async (data: Plant): Promise<void> => {
 
   console.log(data)
 
-  
+
   await axios.post(`${PLANT_STORE_API_URL}/plants/`, data)
 }
 
@@ -22,7 +22,7 @@ export const createDefaultPlantType = async (): Promise<PlantType[]> => {
   return plantTypes
 }
 
-export const createPlantTypeIfNotExists = async (
+/* export const createPlantTypeIfNotExists = async (
   plantTypes: PlantType[],
   data: IFormInput
 ): Promise<number> => {
@@ -38,14 +38,14 @@ export const createPlantTypeIfNotExists = async (
   }
 
   return Number(plantTypeId)
-}
+} */
 
 export const getPlantLabelId = (plantLabel: PlantLabel): number => {
   return plantLabel === PlantLabel.Indoor ? 1 : 2
 }
 
 export const fetchPlantTypes = async (): Promise<PlantType[]> => {
-  const response = await axios.get(`${PLANT_STORE_API_URL}/plant-types/`)
+  const response = await axios.get(`${PLANT_STORE_API_URL}/plant-type/`)
   return response.data
 }
 
