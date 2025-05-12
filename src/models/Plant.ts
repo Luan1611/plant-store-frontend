@@ -3,7 +3,7 @@ export interface Plant {
   name: string
   subtitle: string
   plantTypes?: Array<PlantType>
-  plantTypeId?: Array<number>
+  plantTypesIds?: Array<number>
   price: number
   isInSale: boolean
   discountPercentage: number

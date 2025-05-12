@@ -37,7 +37,7 @@ const PlantCard = ({ name, price, id, discountPercentage, imgUrl }: Plant) => {
           </span>
         </div>
         <div className='buttons'>
-          <Link className='plant-button' to={`/product/${id}`}>
+          <Link className='plant-button' to={`/products/${id}`}>
             View Product
           </Link>
           <a className='plant-button delete' onClick={handleDelete}>

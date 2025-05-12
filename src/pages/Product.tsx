@@ -8,22 +8,50 @@ import '../styles/Product.css'
 const Product = () => {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
+  console.log('Product ID from params:', id)
+  
   const { plant: product, loading, error } = useFetchPlant(id || '')
+  console.log('Product data:', product)
+  console.log('Loading state:', loading)
+  console.log('Error state:', error)
 
-  if (loading) return <Loading color='#000' size='medium' />
-
-  if (error || !product || !product.plantTypes) {
-    console.error(error)
-    navigate('/404')
-    return
+  if (loading) {
+    console.log('Rendering loading state')
+    return (
+      <div className="loading-container">
+        <Loading color='#000' size='medium' />
+      </div>
+    )
   }
 
+  if (error) {
+    console.error('Error fetching product:', error)
+    return (
+      <div className="error-container">
+        <h2>Error loading product</h2>
+        <p>{error}</p>
+        <button onClick={() => navigate('/')}>Return to Home</button>
+      </div>
+    )
+  }
+
+  if (!product) {
+    console.error('No product data received')
+    return (
+      <div className="error-container">
+        <h2>Product not found</h2>
+        <button onClick={() => navigate('/')}>Return to Home</button>
+      </div>
+    )
+  }
+
+  console.log('Rendering product:', product)
   return (
     <div className='product-container'>
       <div className='product-image'>
         <img
           src={
-            product.imgUrl.includes('example')
+            !product.imgUrl || product.imgUrl.includes('example')
               ? 'https://placehold.co/500x500'
               : product.imgUrl
           }
@@ -36,7 +64,7 @@ const Product = () => {
           <h2 className='subtitle lato'>{product.subtitle}</h2>
         </div>
         <div className='labels'>
-          {product.plantTypes.map(plantType => (
+          {product.plantTypes?.map(plantType => (
             <span key={plantType.id} className='label lato'>
               {plantType.name.toLowerCase()}
             </span>
@@ -81,4 +109,5 @@ const Product = () => {
     </div>
   )
 }
+
 export default Product
