@@ -9,7 +9,6 @@ import { Plant, PlantType } from '../models/Plant'
 import {
   createPlant,
   fetchPlantTypes,
-  getPlantLabelId,
 } from '../services/plantService'
 import '../styles/Register.css'
 import { IFormInput, plantSchema } from '../validation/plantSchema'

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { PLANT_STORE_API_URL } from '../main'
 import { Plant, PlantType } from '../models/Plant'
-import { IFormInput, PlantLabel } from '../validation/plantSchema'
+import { PlantLabel } from '../validation/plantSchema'
 
 export const createPlant = async (data: Plant): Promise<void> => {
 
