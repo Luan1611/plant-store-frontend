@@ -25,12 +25,12 @@ const Register = () => {
 
   const handlePlantRegistration = async (data: IFormInput) => {
     try {
-      const plantTypes = await createDefaultPlantType()
+      //const plantTypes = await createDefaultPlantType()
       const plantLabelId = getPlantLabelId(data.plantLabel)
 
       let plantTypeId: number = 0
       try {
-        plantTypeId = await createPlantTypeIfNotExists(plantTypes, data)
+        //plantTypeId = await createPlantTypeIfNotExists(plantTypes, data)
       } catch (error) {
         console.error('Failed to create plant type:', error)
         window.location.href = '/'
@@ -50,10 +50,10 @@ const Register = () => {
       }
 
       await createPlant(payload)
-      window.location.href = '/'
+      //window.location.href = '/'
     } catch (error) {
       console.error('Failed to register plant:', error)
-      window.location.href = '/'
+      //window.location.href = '/'
     }
   }
 

@@ -10,7 +10,7 @@ const Footer = () => {
         <div className='main-content'>
           <div className='flex-col'>
             <h1>Stay Fresh</h1>
-            <span>lojadogroot@gmail.com</span>
+            <span>plantstore@gmail.com</span>
             <span>+55 (41) 99999-9999</span>
           </div>
           <div className='links'>
