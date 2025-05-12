@@ -1,10 +1,10 @@
 import axios from 'axios'
-import { LOJA_DO_GROOT_API_URL } from '../main'
+import { PLANT_STORE_API_URL } from '../main'
 import { Plant, PlantType } from '../models/Plant'
 import { IFormInput, PlantLabel } from '../validation/plantSchema'
 
 export const createPlant = async (data: Plant): Promise<void> => {
-  await axios.post(`${LOJA_DO_GROOT_API_URL}/plants/`, data)
+  await axios.post(`${PLANT_STORE_API_URL}/plants/`, data)
 }
 
 export const createDefaultPlantType = async (): Promise<PlantType[]> => {
@@ -41,18 +41,23 @@ export const getPlantLabelId = (plantLabel: PlantLabel): number => {
 }
 
 export const fetchPlantTypes = async (): Promise<PlantType[]> => {
-  const response = await axios.get(`${LOJA_DO_GROOT_API_URL}/plant-types/`)
+  const response = await axios.get(`${PLANT_STORE_API_URL}/plant-types/`)
+  return response.data
+}
+
+export const fetchPlantCategories = async (): Promise<PlantType[]> => {
+  const response = await axios.get(`${PLANT_STORE_API_URL}/plant-category/`)
   return response.data
 }
 
 export const createPlantType = async (name: string): Promise<void> => {
-  await axios.post(`${LOJA_DO_GROOT_API_URL}/plant-types/`, {
+  await axios.post(`${PLANT_STORE_API_URL}/plant-type/`, {
     name,
   })
 }
 
 export const deletePlant = async (id: string): Promise<void> => {
-  await axios.delete(`${LOJA_DO_GROOT_API_URL}/plants/${id}`)
+  await axios.delete(`${PLANT_STORE_API_URL}/plants/${id}`)
 }
 
 export const getPlantTypeId = (

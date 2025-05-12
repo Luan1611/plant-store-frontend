@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { LOJA_DO_GROOT_API_URL } from '../main'
+import { PLANT_STORE_API_URL } from '../main'
 import { Hook } from '../models/Hook'
 import { Plant } from '../models/Plant'
 
@@ -17,7 +17,7 @@ const useFetchPlant = (id: string) => {
     const fetchPlant = async () => {
       try {
         const response = await axios.get(
-          `${LOJA_DO_GROOT_API_URL}/plants/${id}`
+          `${PLANT_STORE_API_URL}/plants/${id}`
         )
 
         setPlant(response.data)

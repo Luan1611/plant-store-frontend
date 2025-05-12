@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { LOJA_DO_GROOT_API_URL } from '../main'
+import { PLANT_STORE_API_URL } from '../main'
 import { Hook } from '../models/Hook'
 import { Plant } from '../models/Plant'
 
@@ -16,7 +16,7 @@ const useFetchPlants = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await axios.get(`${LOJA_DO_GROOT_API_URL}/plants/`)
+        const response = await axios.get(`${PLANT_STORE_API_URL}/plants/`)
         setPlants(response.data)
       } catch (err) {
         setError('Failed to fetch plants: ' + err)

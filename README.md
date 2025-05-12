@@ -53,7 +53,7 @@ Para rodar este projeto localmente, siga os passos abaixo:
 
    ```env
    VITE_CLERK_PUBLISHABLE_KEY=pk_test_sua_chave_aqui
-   VITE_LOJA_DO_GROOT_API_URL=loja-do-groot-api-url
+   VITE_PLANT_STORE_API_URL=loja-do-groot-api-url
    ```
 
 5. Inicie o servidor de desenvolvimento:
@@ -90,7 +90,7 @@ loja-do-groot-web/
 │   │   ├── images/
 │   │   │   ├── left_plant.png
 │   │   │   ├── right_plant.png
-│   ├── components/
+│   │   ├── components/
 │   │   ├── AboutUsCard.tsx
 │   │   ├── Button.tsx
 │   │   ├── ColumnText.tsx

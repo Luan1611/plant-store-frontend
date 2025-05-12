@@ -46,6 +46,7 @@ const Register = () => {
         features: data.plantFeatures,
         description: data.plantDescription,
         imgUrl: data.plantImgUrl,
+        plantCategoryId: 1
       }
 
       await createPlant(payload)
