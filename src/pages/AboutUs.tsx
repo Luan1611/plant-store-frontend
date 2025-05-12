@@ -9,34 +9,16 @@ const AboutUs = () => {
 
       <section className='about-us-content'>
         <AboutUsCard
-          description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis pretium ligula. Proin consectetur cursus felis sed egestas. Nullam eleifend neque sed est tincidunt, faucibus vehicula sem tincidunt. Sed molestie nec eros vitae dignissim. Etiam justo purus, lobortis id sagittis et, tincidunt sed urna. Sed luctus malesuada eros vitae cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed eget elit quis urna volutpat cursus. '
+          description=' Nada a declarar'
           github='#'
           linkedin='#'
-          name='Lorem ipsum'
+          name='Luan Marqueti'
         />
         <AboutUsCard
-          description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis pretium ligula. Proin consectetur cursus felis sed egestas. Nullam eleifend neque sed est tincidunt, faucibus vehicula sem tincidunt. Sed molestie nec eros vitae dignissim. Etiam justo purus, lobortis id sagittis et, tincidunt sed urna. Sed luctus malesuada eros vitae cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed eget elit quis urna volutpat cursus. '
+          description='Desenvolvedora Full-sterco'
           github='#'
           linkedin='#'
-          name='Lorem ipsum'
-        />
-        <AboutUsCard
-          description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis pretium ligula. Proin consectetur cursus felis sed egestas. Nullam eleifend neque sed est tincidunt, faucibus vehicula sem tincidunt. Sed molestie nec eros vitae dignissim. Etiam justo purus, lobortis id sagittis et, tincidunt sed urna. Sed luctus malesuada eros vitae cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed eget elit quis urna volutpat cursus. '
-          github='#'
-          linkedin='#'
-          name='Lorem ipsum'
-        />
-        <AboutUsCard
-          description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis pretium ligula. Proin consectetur cursus felis sed egestas. Nullam eleifend neque sed est tincidunt, faucibus vehicula sem tincidunt. Sed molestie nec eros vitae dignissim. Etiam justo purus, lobortis id sagittis et, tincidunt sed urna. Sed luctus malesuada eros vitae cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed eget elit quis urna volutpat cursus. '
-          github='#'
-          linkedin='#'
-          name='Lorem ipsum'
-        />
-        <AboutUsCard
-          description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis pretium ligula. Proin consectetur cursus felis sed egestas. Nullam eleifend neque sed est tincidunt, faucibus vehicula sem tincidunt. Sed molestie nec eros vitae dignissim. Etiam justo purus, lobortis id sagittis et, tincidunt sed urna. Sed luctus malesuada eros vitae cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed eget elit quis urna volutpat cursus. '
-          github='#'
-          linkedin='#'
-          name='Lorem ipsum'
+          name='Luana Giovana Monteiro'
         />
       </section>
     </div>
