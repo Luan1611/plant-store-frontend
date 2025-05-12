@@ -1,5 +1,4 @@
 import '../styles/Footer.css'
-import grootLogo from '/groot-logo.svg'
 
 const Footer = () => {
   return (
@@ -32,9 +31,9 @@ const Footer = () => {
 
         <div className='rights'>
           <div>
-            <img className='logo' src={grootLogo} alt='' />
+            <h2>Plant Store</h2>
           </div>
-          <div>Loja Do Groot®. All rights reserved.</div>
+          <div>Plant Store®. All rights reserved.</div>
         </div>
       </div>
     </footer>

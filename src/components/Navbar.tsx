@@ -1,7 +1,6 @@
-import { UserButton } from '@clerk/clerk-react'
+// import { UserButton } from '@clerk/clerk-react'
 import { NavLink } from 'react-router-dom'
 import '../styles/Navbar.css'
-import grootLogo from '/groot-logo.svg'
 
 const Navbar = () => {
   const toogleActive = (isActive: boolean) => (isActive ? 'active-link' : '')
@@ -10,7 +9,7 @@ const Navbar = () => {
     <nav className='nav'>
       <div className='nav-start'>
         <NavLink to={'/home'}>
-          <img src={grootLogo} alt='' />
+          <h1>Plant Store</h1>
         </NavLink>
       </div>
       <div className='nav-center'>
@@ -46,7 +45,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className='nav-end'>
-        <UserButton />
+        {/* <UserButton /> */}
       </div>
     </nav>
   )

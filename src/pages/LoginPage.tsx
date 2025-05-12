@@ -1,10 +1,11 @@
-import { SignIn } from '@clerk/clerk-react'
+// import { SignIn } from '@clerk/clerk-react'
 import '../styles/LoginPage.css'
 
 const LoginPage = () => {
   return (
     <div className='login-page'>
-      <SignIn />
+      {/* <SignIn /> */}
+      <h1>Página de Login</h1>
     </div>
   )
 }
