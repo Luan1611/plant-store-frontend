@@ -34,13 +34,13 @@ Para rodar este projeto localmente, siga os passos abaixo:
 1. Clone o repositório:
 
    ```sh
-   git clone https://github.com/seu-usuario/loja-do-groot-web.git
+   git clone https://github.com/seu-usuario/plant-store-web.git
    ```
 
 2. Navegue até o diretório do projeto:
 
    ```sh
-   cd loja-do-groot-web
+   cd plant-store-web
    ```
 
 3. Instale as dependências:
@@ -53,7 +53,7 @@ Para rodar este projeto localmente, siga os passos abaixo:
 
    ```env
    VITE_CLERK_PUBLISHABLE_KEY=pk_test_sua_chave_aqui
-   VITE_PLANT_STORE_API_URL=loja-do-groot-api-url
+   VITE_PLANT_STORE_API_URL=plant-store-api-url
    ```
 
 5. Inicie o servidor de desenvolvimento:
@@ -71,7 +71,7 @@ Após iniciar o servidor de desenvolvimento, você pode acessar a aplicação em
 A estrutura do projeto é organizada da seguinte forma:
 
 ```
-loja-do-groot-web/
+plant-store-web/
 ├── .env.local
 ├── .gitignore
 ├── eslint.config.js
