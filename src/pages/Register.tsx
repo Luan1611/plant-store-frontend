@@ -53,7 +53,7 @@ const Register = () => {
       const payload: Plant = {
         name: data.plantName,
         subtitle: data.plantSubtitle,
-        plantTypesIds: [...data.plantTypes],
+        plantTypeId: [...data.plantTypes],
         price: data.plantPrice,
         isInSale: true,
         discountPercentage: data.plantDiscountPercentage,
