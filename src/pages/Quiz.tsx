@@ -1,12 +1,13 @@
-import Hero from '../components/Hero'
+import HeroQuiz from '../components/HeroQuiz'
 import '../styles/Home.css'
 import { QuizData, quizSchema } from '../validation/quizSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import rightPlant from '../assets/images/right_plant.png'
 
 const plantCategories = [
     "Medicinal", "Ornamental", "Edible", "Aromatic", "Toxic", "Carnivorous", "Forestry",
-    "Indoor", "Outdoor", "Tropical", "Desert", "Native", "Exotic", "Climbing",
+    "Tropical", "Desert", "Native", "Exotic", "Climbing",
     "Citrus", "Grain", "Legume", "Oilseed", "Leafy", "Evergreen"
 ]
   
@@ -31,7 +32,7 @@ const Quiz = () => {
 
     return (
     <div className='quiz'>
-        <Hero
+        <HeroQuiz
             title='Discover Your **Green** Side'
             subtitle='Love for Nature'
             text='Discover your perfect plant match — take the quiz and let nature choose for you!'
@@ -102,6 +103,14 @@ const Quiz = () => {
             <button className='button' type='submit'>See Results</button>
             </form>
         </div>
+
+        <aside>
+            <img
+            className='hero-right-plant'
+            src={rightPlant}
+            alt='A plant on the right side of the page'
+            />
+        </aside>
     </div>
     )
 }
