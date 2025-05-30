@@ -5,7 +5,7 @@ export enum PlantLabel {
   OUTDOOR = 'Outdoor',
 }
 
-export interface IFormInput {
+/* export interface IFormInput {
   plantName: string
   plantSubtitle: string
   plantTypes: number[]
@@ -15,7 +15,7 @@ export interface IFormInput {
   plantFeatures: string
   plantDescription: string
   plantImgurl: string
-}
+} */
 
 export const plantSchema = z.object({
   plantName: z

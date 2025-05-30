@@ -1,380 +1,108 @@
-import { OrbitProgress } from 'react-loading-indicators'
 import Hero from '../components/Hero'
-import useFetchPlants from '../hooks/useFetchPlants'
 import '../styles/Home.css'
+import { QuizData, quizSchema } from '../validation/quizSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+
+const plantCategories = [
+    "Medicinal", "Ornamental", "Edible", "Aromatic", "Toxic", "Carnivorous", "Forestry",
+    "Indoor", "Outdoor", "Tropical", "Desert", "Native", "Exotic", "Climbing",
+    "Citrus", "Grain", "Legume", "Oilseed", "Leafy", "Evergreen"
+]
+  
+const plantTypes = [
+"Tree", "Shrub", "Herb", "Climber", "Herbaceous", "Groundcover", "Epiphyte",
+"Succulent", "Aquatic", "Trailing", "Palm", "Vine", "Conifer", "Moss",
+"Fern", "Grass", "Bryophyte", "Angiosperm", "Pteridophyte", "Annual"
+]
 
 const Quiz = () => {
-  const { loading, error } = useFetchPlants()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<QuizData>({
+        resolver: zodResolver(quizSchema),
+    })
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm<IFormInput>({
-    resolver: zodResolver(plantSchema),
-  })
+    function handleQuizInfos(data: QuizData) {
+        alert('Submitted!\n' + JSON.stringify(data, null, 2))
+    }
 
-  if (loading)
     return (
-      <div className='loading'>
-        <OrbitProgress color='#000' size='medium' text='' textColor='' />
-      </div>
-    )
-  if (error) return <div>{error}</div>
-
-  return (
     <div className='quiz'>
-      <Hero
-        title='Discover Your **Green** Side'
-        subtitle='Love for Nature'
-        text='Discover your perfect plant match — take the quiz and let nature choose for you!'
-        link='/quiz '
-      />
+        <Hero
+            title='Discover Your **Green** Side'
+            subtitle='Love for Nature'
+            text='Discover your perfect plant match — take the quiz and let nature choose for you!'
+            link='/quiz'
+        />
 
-    <div className='form-container'>
-
+        <div className='form-container'>
             <h1>Quick Quiz Form</h1>
-            <form onSubmit={handleSubmit(handlePlantRegistration)} method='post'>
+            <form onSubmit={handleSubmit(handleQuizInfos)}>
 
-            <div className='plant-types-container'>
-                <label>Plant Types</label>
-                <div className='plant-types-grid'>
-                {plantTypes.map((type) => (
-                    <div key={type.id} className='plant-type-checkbox'>
+            <div className='flex-row radio-group'>
+                <span>What kind of plant would fit you?</span>
+                <div className='flex-row'>
+                <input
+                    id='plantLabelIndoor'
+                    type='radio'
+                    value='Indoor'
+                    {...register('plantLabel')}
+                />
+                <label htmlFor='plantLabelIndoor'>Indoor</label>
+                <input
+                    id='plantLabelOutdoor'
+                    type='radio'
+                    value='Outdoor'
+                    {...register('plantLabel')}
+                />
+                <label htmlFor='plantLabelOutdoor'>Outdoor</label>
+                </div>
+                {errors.plantLabel && <p className='error'>{errors.plantLabel.message}</p>}
+            </div>
+
+            <div className='flex-row radio-group'>
+                <span>Does any of these categories appeal to you?</span>
+                <div className='flex-row' style={{ flexWrap: 'wrap' }}>
+                {plantCategories.map((cat) => (
+                    <div key={cat} style={{ marginRight: 12 }}>
                     <input
-                        type='checkbox'
-                        id={`plant-type-${type.id}`}
-                        checked={selectedPlantTypes.includes(type.id)}
-                        onChange={() => handlePlantTypeChange(type.id)}
+                        id={'plantCategory-' + cat}
+                        type='radio'
+                        value={cat}
+                        {...register('plantCategory')}
                     />
-                    <label htmlFor={`plant-type-${type.id}`}>{type.name}</label>
+                    <label htmlFor={'plantCategory-' + cat}>{cat}</label>
                     </div>
                 ))}
                 </div>
-                {errors.plantTypes?.message && (
-                <p className='error'>{errors.plantTypes?.message}</p>
-                )}
+                {errors.plantCategory && <p className='error'>{errors.plantCategory.message}</p>}
             </div>
 
             <div className='flex-row radio-group'>
-                <span>What kind of plant would fit you:</span>
-                <div className='flex-row'>
-                <input
-                    label='Indoor'
-                    type='radio'
-                    value='Indoor'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Outdoor'
-                    type='radio'
-                    value='Outdoor'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
+                <span>Does any of these types appeal to you?</span>
+                <div className='flex-row' style={{ flexWrap: 'wrap' }}>
+                {plantTypes.map((type) => (
+                    <div key={type} style={{ marginRight: 12 }}>
+                    <input
+                        id={'plantType-' + type}
+                        type='radio'
+                        value={type}
+                        {...register('plantType')}
+                    />
+                    <label htmlFor={'plantType-' + type}>{type}</label>
+                    </div>
+                ))}
                 </div>
+                {errors.plantType && <p className='error'>{errors.plantType.message}</p>}
             </div>
 
-            <div className='flex-row radio-group'>
-                <span>Does any of these categories appease you?</span>
-                <div className='flex-row'>
-                <input
-                    label='Medicinal'
-                    type='radio'
-                    value='Medicinal'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Ornamental'
-                    type='radio'
-                    value='Ornamental'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Edible'
-                    type='radio'
-                    value='Edible'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Aromatic'
-                    type='radio'
-                    value='Aromatic'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Toxic'
-                    type='radio'
-                    value='Toxic'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Carnivorous'
-                    type='radio'
-                    value='Carnivorous'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Forestry'
-                    type='radio'
-                    value='Forestry'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Indoor'
-                    type='radio'
-                    value='Indoor'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Outdoor'
-                    type='radio'
-                    value='Outdoor'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Tropical'
-                    type='radio'
-                    value='Tropical'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Desert'
-                    type='radio'
-                    value='Desert'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Native'
-                    type='radio'
-                    value='Native'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Exotic'
-                    type='radio'
-                    value='Exotic'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Climbing'
-                    type='radio'
-                    value='Climbing'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Citrus'
-                    type='radio'
-                    value='Citrus'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Grain'
-                    type='radio'
-                    value='Grain'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Legume'
-                    type='radio'
-                    value='Legume'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Oilseed'
-                    type='radio'
-                    value='Oilseed'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Leafy'
-                    type='radio'
-                    value='Leafy'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Evergreen'
-                    type='radio'
-                    value='Evergreen'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-
-                </div>
-            </div>
-
-            <div className='flex-row radio-group'>
-                <span>Does any of these types appease you?</span>
-                <div className='flex-row'>
-                <input
-                    label='Tree'
-                    type='radio'
-                    value='Tree'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Shrub'
-                    type='radio'
-                    value='Shrub'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Herb'
-                    type='radio'
-                    value='Herb'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Climber'
-                    type='radio'
-                    value='Climber'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Herbaceous'
-                    type='radio'
-                    value='Herbaceous'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Groundcover'
-                    type='radio'
-                    value='Groundcover'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Epiphyte'
-                    type='radio'
-                    value='Epiphyte'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Succulent'
-                    type='radio'
-                    value='Succulent'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Aquatic'
-                    type='radio'
-                    value='Aquatic'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Trailing'
-                    type='radio'
-                    value='Trailing'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Palm'
-                    type='radio'
-                    value='Palm'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Vine'
-                    type='radio'
-                    value='Vine'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Conifer'
-                    type='radio'
-                    value='Conifer'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Moss'
-                    type='radio'
-                    value='Moss'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Fern'
-                    type='radio'
-                    value='Fern'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Grass'
-                    type='radio'
-                    value='Grass'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Bryophyte'
-                    type='radio'
-                    value='Bryophyte'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Angiosperm'
-                    type='radio'
-                    value='Angiosperm'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Pteridophyte'
-                    type='radio'
-                    value='Pteridophyte'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-                <input
-                    label='Annual'
-                    type='radio'
-                    value='Annual'
-                    className='radio'
-                    {...register('plantLabel')}
-                />
-
-            </div>
+            <button className='button' type='submit'>See Results</button>
+            </form>
         </div>
-
-        <Button text='See Results' type='submit' />
-        </form>
     </div>
-</div>
     )
 }
 
