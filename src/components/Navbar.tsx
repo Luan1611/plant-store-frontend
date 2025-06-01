@@ -38,6 +38,13 @@ const Navbar = () => {
           <li>
             <NavLink
               className={({ isActive }) => toogleActive(isActive)}
+              to={'/quiz'}>
+              Quiz
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => toogleActive(isActive)}
               to={'/about-us'}>
               About Us
             </NavLink>
