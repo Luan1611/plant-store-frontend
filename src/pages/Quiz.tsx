@@ -1,5 +1,5 @@
 import HeroQuiz from '../components/HeroQuiz'
-import '../styles/Home.css'
+import '../styles/Quiz.css'
 import { QuizData, quizSchema } from '../validation/quizSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'

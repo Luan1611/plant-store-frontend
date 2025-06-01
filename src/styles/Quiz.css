@@ -1,0 +1,13 @@
+.home{
+  flex: 1;
+  background-color: #fcfcfc;
+}
+
+.hero-right-plant {
+  position: absolute;
+  bottom: 10%;
+  right: 0px;
+  z-index: -1;
+  filter: grayscale(100%);
+  align-items: end;
+}
