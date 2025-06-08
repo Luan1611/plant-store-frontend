@@ -33,9 +33,7 @@ const Home = () => {
       />
 
       <PlantContainer
-        plants={plants.filter(
-          plant => plant.isInSale && plant.discountPercentage > 0
-        )}
+        plants={plants}
         title='**Plants In** Sale'
       />
     </div>
