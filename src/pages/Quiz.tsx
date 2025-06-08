@@ -4,6 +4,8 @@ import { QuizData, quizSchema } from '../validation/quizSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import rightPlant from '../assets/images/right_plant.png'
+import { useNavigate } from 'react-router-dom'
+
 
 const plantCategories = [
     "Medicinal", "Ornamental", "Edible", "Aromatic", "Toxic", "Carnivorous", "Forestry",
@@ -17,6 +19,8 @@ const plantTypes = [
 "Fern", "Grass", "Bryophyte", "Angiosperm", "Pteridophyte", "Annual"
 ]
 
+
+
 const Quiz = () => {
     const {
         register,
@@ -26,9 +30,12 @@ const Quiz = () => {
         resolver: zodResolver(quizSchema),
     })
 
+    const navigate = useNavigate()
+
     function handleQuizInfos(data: QuizData) {
-        alert('Submitted!\n' + JSON.stringify(data, null, 2))
-    }
+        const query = new URLSearchParams(data as any).toString()
+        navigate(`/products?${query}`)
+      }
 
     return (
     <div className='quiz'>

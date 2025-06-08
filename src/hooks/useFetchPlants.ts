@@ -8,7 +8,7 @@ interface UseFetchPlants extends Hook {
   plants: Plant[]
 }
 
-const useFetchPlants = () => {
+const useFetchPlants = (filters?: Record<string, string>) => {
   const [plants, setPlants] = useState<Plant[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -16,17 +16,18 @@ const useFetchPlants = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await axios.get(`${PLANT_STORE_API_URL}/plants/`)
+        const query = filters ? `?${new URLSearchParams(filters).toString()}` : ''
+        const response = await axios.get(`${PLANT_STORE_API_URL}/plants/${query}`)
         setPlants(response.data)
       } catch (err) {
-        setError('Failed to fetch plants: ' + err)
+        setError('Failed to fetch plants: ' + String(err))
       } finally {
         setLoading(false)
       }
     }
 
     fetchPlants()
-  }, [])
+  }, [JSON.stringify(filters)]) // refaz a chamada se os filtros mudarem
 
   return { plants, loading, error } as UseFetchPlants
 }
