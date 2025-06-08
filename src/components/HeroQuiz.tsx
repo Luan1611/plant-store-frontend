@@ -1,4 +1,4 @@
-import '../styles/Hero.css'
+import '../styles/HeroQuiz.css'
 import TextContainer from './TextContainer'
 import Title from './Title'
 
