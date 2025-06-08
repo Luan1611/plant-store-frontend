@@ -106,7 +106,7 @@ const Quiz = () => {
 
         <aside>
             <img
-            className='hero-right-plant'
+            className='hero-right-plant-quiz'
             src={rightPlant}
             alt='A plant on the right side of the page'
             />
