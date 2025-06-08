@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import '../styles/Footer.css'
 
 const Footer = () => {
+  const linkStyle = { color: 'white', textDecoration: 'none' }
+
   return (
     <footer className='footer'>
       <div className='content'>
@@ -15,15 +17,15 @@ const Footer = () => {
           <div className='links'>
             <div className='flex-col'>
               <h3>Links</h3>
-              <Link to="/about-us">About Us</Link>
-              <Link to="/products">Products</Link>
-              <Link to="/quiz">Quiz</Link>
+              <Link to="/about-us" style={linkStyle}>About Us</Link>
+              <Link to="/products" style={linkStyle}>Products</Link>
+              <Link to="/quiz" style={linkStyle}>Quiz</Link>
             </div>
             <div className='flex-col'>
               <h3>Community</h3>
-              <Link to="/about-us">About Us</Link>
-              <Link to="/products">Products</Link>
-              <Link to="/quiz">Quiz</Link>
+              <Link to="/about-us" style={linkStyle}>About Us</Link>
+              <Link to="/products" style={linkStyle}>Products</Link>
+              <Link to="/quiz" style={linkStyle}>Quiz</Link>
             </div>
           </div>
         </div>
