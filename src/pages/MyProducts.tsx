@@ -4,13 +4,20 @@ import PlantCard from '../components/PlantCard'
 import useFetchMyPlants from '../hooks/useFetchMyPlants'
 import '../styles/Products.css'
 import { useLocation } from 'react-router-dom'
-
+import { useAuth } from '../contexts/AuthContext'
 
 const MyProducts = () => {
   const navigate = useNavigate()
   const { search } = useLocation()
-  
-  const userId = 1
+  const { user } = useAuth()
+
+  // Se não estiver logado, redireciona (opcional, se já usa PrivateRoute pode remover)
+  if (!user) {
+    navigate('/login')
+    return null
+  }
+
+  const userId = user.id
   const { plants, loading, error } = useFetchMyPlants(userId)
 
   if (loading)
@@ -22,15 +29,16 @@ const MyProducts = () => {
   if (error) {
     console.error(error)
     navigate('/404')
-    return
+    return null
   }
 
   return (
     <div className='products'>
-      {plants.map(product => {
-        return <PlantCard key={product.id} {...product} />
-      })}
+      {plants.map(product => (
+        <PlantCard key={product.id} {...product} />
+      ))}
     </div>
   )
 }
+
 export default MyProducts

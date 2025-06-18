@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 import './index.css'
 
+import { AuthProvider } from './contexts/AuthContext' // <-- Adicione isso
+
 // const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 export const PLANT_STORE_API_URL = import.meta.env.VITE_PLANT_STORE_API_URL
 
@@ -20,7 +22,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {/* <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl={'/'}> */}
       <BrowserRouter>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </BrowserRouter>
     {/* </ClerkProvider> */}
   </StrictMode>
